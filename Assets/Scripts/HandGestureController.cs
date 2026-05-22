@@ -9,6 +9,7 @@ public class HandGestureController : MonoBehaviour
 
     [Header("Settings")]
     public LayerMask surfaceMask;
+    public AgentController agentController;
 
     [Header("Ray Visualization")]
     public LineRenderer lineRenderer;
@@ -120,6 +121,10 @@ public class HandGestureController : MonoBehaviour
             lineRenderer.SetPosition(1, hit.point);
             lineRenderer.startColor = Color.green;
             lineRenderer.endColor = Color.green;
+
+            if (agentController != null)
+                agentController.SetDestination(hit.point);
+
             Debug.Log("Destination set: " + destination);
         }
         else
